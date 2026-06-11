@@ -1,0 +1,323 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.db{background:#09090f;padding:20px;font-family:var(--font-sans)}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid #1e1e2e}
+.logo-cb{width:42px;height:42px;border-radius:8px;background:#0d0d1a;border:0.5px solid #534AB7;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:#AFA9EC;letter-spacing:1px;flex-shrink:0}
+.title-block{flex:1;padding:0 16px}
+.title-main{font-size:16px;font-weight:500;color:#f0ede6;letter-spacing:0.5px}
+.title-sub{font-size:11px;color:#555570;margin-top:2px;letter-spacing:1px}
+.status-pill{display:flex;align-items:center;gap:6px;background:#0d1a0d;border:0.5px solid #1a3a1a;border-radius:20px;padding:6px 12px;flex-shrink:0}
+.dot-green{width:7px;height:7px;border-radius:50%;background:#1D9E75}
+.status-text{font-size:11px;color:#5DCAA5}
+.grid-top{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#0d0d1a;border:0.5px solid #1e1e2e;border-radius:10px;padding:14px 16px}
+.kpi-label{font-size:10px;color:#555570;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.kpi-value{font-size:26px;font-weight:500;color:#AFA9EC}
+.kpi-value.highlight{color:#7F77DD;font-size:32px}
+.kpi-value.teal{color:#1D9E75}
+.kpi-value.amber{color:#EF9F27}
+.kpi-sub{font-size:10px;color:#3C3489;margin-top:6px;border-top:0.5px solid #1e1e2e;padding-top:6px}
+.grid-mid{display:grid;grid-template-columns:3fr 2fr;gap:12px;margin-bottom:16px}
+.panel{background:#0d0d1a;border:0.5px solid #1e1e2e;border-radius:10px;padding:16px}
+.panel-title{font-size:11px;color:#555570;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:220px}
+.corr-box{background:#07071a;border:0.5px solid #534AB7;border-radius:8px;padding:12px;margin-bottom:10px;text-align:center}
+.corr-rho{font-size:38px;font-weight:500;color:#7F77DD}
+.corr-label{font-size:10px;color:#534AB7;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.mini-matrix{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:12px}
+.mx-cell{background:#0d0d2a;border-radius:4px;padding:8px;text-align:center}
+.mx-cell.dark{background:#1a1a4a}
+.mx-val{color:#7F77DD;font-weight:500;font-size:13px}
+.mx-lbl{color:#44445a;font-size:9px;margin-top:2px}
+.grid-bot{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flow-steps{display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:0.5px solid #131325}
+.flow-step:last-child{border-bottom:none}
+.step-num{width:20px;height:20px;border-radius:50%;background:#1a1a2e;border:0.5px solid #534AB7;display:flex;align-items:center;justify-content:center;font-size:10px;color:#AFA9EC;flex-shrink:0;margin-top:1px}
+.step-name{font-size:12px;color:#CCC8F0;font-weight:500}
+.step-desc{font-size:10px;color:#44445a;margin-top:2px}
+.step-arrow{color:#3C3489;font-size:14px;margin-left:24px;line-height:0.8;padding:2px 0}
+.sys-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:0.5px solid #131325}
+.sys-row:last-child{border-bottom:none}
+.sys-key{font-size:11px;color:#555570}
+.sys-val{font-size:11px;color:#CCC8F0;font-family:var(--font-mono)}
+.badge{display:inline-block;background:#0d1a0d;border:0.5px solid #0F6E56;border-radius:4px;padding:2px 8px;font-size:10px;color:#1D9E75}
+.badge.pending{background:#1a0d0d;border-color:#6e2020;color:#E24B4A}
+.legend-row{display:flex;gap:16px;margin-bottom:10px;font-size:10px;color:#555570}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-solid{width:18px;height:2px;background:#7F77DD}
+.leg-dash{width:18px;height:0;border-top:2px dashed #1D9E75}
+</style>
+
+<div class="db">
+
+<div class="topbar">
+  <div class="logo-cb">CB</div>
+  <div class="title-block">
+    <div class="title-main">CRYPTO-BRAIN: AI Sentiment Trading MVP Dashboard</div>
+    <div class="title-sub">Samuel Castillo Benavides · Ingenieria en Analitica de Datos · UniCervantes</div>
+  </div>
+  <div class="status-pill">
+    <div class="dot-green"></div>
+    <span class="status-text">Sistema activo · Auditoria diaria Linux Mint</span>
+  </div>
+</div>
+
+<div class="grid-top">
+  <div class="kpi">
+    <div class="kpi-label">Correlacion Pearson (ρ)</div>
+    <div class="kpi-value highlight">0.506</div>
+    <div class="kpi-sub">Correlacion positiva moderada-fuerte validada</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Activos monitoreados</div>
+    <div class="kpi-value teal">7</div>
+    <div class="kpi-sub">AAPL AMZN META NVDA JPM BTC ETH</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Registros de precio</div>
+    <div class="kpi-value">5,468</div>
+    <div class="kpi-sub">Desde 2023 · OHLCV diario</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Sentimiento minimo AAPL</div>
+    <div class="kpi-value amber">−0.80</div>
+    <div class="kpi-sub">Panico detectado · jun 2025 · precio &lt; $200</div>
+  </div>
+</div>
+
+<div class="grid-mid">
+  <div class="panel">
+    <div class="panel-title">Analisis dinamico: precio AAPL vs. sentimiento general de mercado</div>
+    <div class="legend-row">
+      <div class="leg-item"><div class="leg-solid"></div><span>Precio cierre AAPL (eje izq.)</span></div>
+      <div class="leg-item"><div class="leg-dash"></div><span>Score promedio FinBERT (eje der.)</span></div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="dualChart" role="img" aria-label="Grafico dual precio AAPL vs sentimiento FinBERT 2024-2026. Precio inicio 178 dolares marzo 2024, pico 246 diciembre 2024, caida a 197 junio 2025 coincidiendo con sentimiento minimo de -0.8, recuperacion a 270 en abril 2026.">
+        Precio AAPL: inicio $178 (mar 2024), pico $246 (dic 2024), minimo $197 (jun 2025), recuperacion $270 (abr 2026). Sentimiento FinBERT: inicio -0.25, mejora a 0.18 (dic 2024), colapso a -0.80 (jun 2025), recuperacion a 0.60 (abr 2026).
+      </canvas>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Validacion estadistica · matriz de correlacion</div>
+    <div class="corr-box">
+      <div class="corr-rho">0.506</div>
+      <div class="corr-label">RETORNO vs. finbert_score_compuesto</div>
+    </div>
+    <div class="mini-matrix">
+      <div class="mx-cell dark">
+        <div class="mx-val">1.000</div>
+        <div class="mx-lbl">RETORNO / RETORNO</div>
+      </div>
+      <div class="mx-cell">
+        <div class="mx-val">0.506</div>
+        <div class="mx-lbl">RETORNO / FinBERT</div>
+      </div>
+      <div class="mx-cell">
+        <div class="mx-val">0.506</div>
+        <div class="mx-lbl">FinBERT / RETORNO</div>
+      </div>
+      <div class="mx-cell dark">
+        <div class="mx-val">1.000</div>
+        <div class="mx-lbl">FinBERT / FinBERT</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:#44445a;line-height:1.6">
+      Correlacion simetrica confirmada. El score compuesto de sentimiento explica una proporcion significativa de la variacion en el retorno del activo.
+    </div>
+  </div>
+</div>
+
+<div class="grid-bot">
+  <div class="panel">
+    <div class="panel-title">Pipeline de automatizacion</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-name">Ingesta de datos</div>
+          <div class="step-desc">Reddit · noticias Yahoo Finance · Fear &amp; Greed · macro</div>
+        </div>
+      </div>
+      <div class="step-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-name">ETL · limpieza y features</div>
+          <div class="step-desc">Normalizacion · deduplicacion · feat_log_return · texto_modelo</div>
+        </div>
+      </div>
+      <div class="step-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-name">Motor NLP · FinBERT / HuggingFace</div>
+          <div class="step-desc">ProsusAI/finbert · sentiment_score · batch inference</div>
+        </div>
+      </div>
+      <div class="step-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-name">DuckDB columnar</div>
+          <div class="step-desc">clean_noticias · clean_reddit · clean_precios</div>
+        </div>
+      </div>
+      <div class="step-arrow">↓</div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-name">Red neuronal · prediccion</div>
+          <div class="step-desc">target_direccion · senal LONG / ESPERA por activo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Estado del sistema</div>
+    <div class="sys-row"><span class="sys-key">Ultima ejecucion exitosa</span><span class="sys-val">2026-06-10 07:00:01</span></div>
+    <div class="sys-row"><span class="sys-key">Entorno</span><span class="sys-val">Linux Mint · venv activo</span></div>
+    <div class="sys-row"><span class="sys-key">Recolector</span><span class="badge">OK</span></div>
+    <div class="sys-row"><span class="sys-key">ETL pipeline</span><span class="badge">Completado</span></div>
+    <div class="sys-row"><span class="sys-key">FinBERT inference</span><span class="badge">Completado</span></div>
+    <div class="sys-row"><span class="sys-key">DuckDB warehouse</span><span class="badge">OK</span></div>
+    <div class="sys-row"><span class="sys-key">Red neuronal</span><span class="badge pending">Pendiente</span></div>
+    <div class="sys-row"><span class="sys-key">Correlacion ρ validada</span><span class="sys-val" style="color:#7F77DD">0.506</span></div>
+    <div class="sys-row"><span class="sys-key">Activos en cobertura</span><span class="sys-val">7 / 7</span></div>
+    <div class="sys-row"><span class="sys-key">Proximo ciclo</span><span class="sys-val">2026-06-11 07:00:00</span></div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const labels = [
+  '2024-03','2024-04','2024-05','2024-07',
+  '2024-10','2024-12','2025-01',
+  '2025-04','2025-06','2025-07',
+  '2025-10','2026-01','2026-04','2026-05'
+];
+
+const prices = [178,185,190,200,220,246,229,204,197,199,220,240,256,270];
+
+const sentiment = [null,-0.25,-0.22,-0.18,0.05,0.18,0.18,0.00,-0.78,-0.65,-0.30,null,0.45,0.60];
+
+new Chart(document.getElementById('dualChart'),{
+  type:'line',
+  data:{
+    labels,
+    datasets:[
+      {
+        label:'Precio AAPL',
+        data:prices,
+        borderColor:'#7F77DD',
+        backgroundColor:'rgba(127,119,221,0.05)',
+        borderWidth:2,
+        pointRadius:3,
+        pointBackgroundColor:'#7F77DD',
+        pointBorderColor:'#09090f',
+        pointBorderWidth:1,
+        tension:0.35,
+        yAxisID:'yPrice',
+        fill:true
+      },
+      {
+        label:'Score FinBERT',
+        data:sentiment,
+        borderColor:'#1D9E75',
+        backgroundColor:'transparent',
+        borderWidth:1.8,
+        borderDash:[5,3],
+        pointRadius:3,
+        pointBackgroundColor:'#1D9E75',
+        pointBorderColor:'#09090f',
+        pointBorderWidth:1,
+        tension:0.35,
+        yAxisID:'ySentiment',
+        fill:false,
+        spanGaps:false
+      }
+    ]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        backgroundColor:'#0d0d1a',
+        borderColor:'#534AB7',
+        borderWidth:0.5,
+        titleColor:'#CCC8F0',
+        titleFont:{size:11},
+        bodyColor:'#888888',
+        bodyFont:{size:10},
+        padding:10,
+        callbacks:{
+          label:ctx=>{
+            if(ctx.datasetIndex===0) return '  Precio: $'+ctx.parsed.y;
+            if(ctx.parsed.y===null||ctx.parsed.y===undefined) return '';
+            return '  Sentimiento: '+ctx.parsed.y.toFixed(2);
+          }
+        }
+      }
+    },
+    scales:{
+      x:{
+        ticks:{
+          color:'#44445a',
+          font:{size:9},
+          maxRotation:40,
+          autoSkip:true,
+          maxTicksLimit:9
+        },
+        grid:{color:'rgba(255,255,255,0.03)'},
+        border:{color:'#1e1e2e'}
+      },
+      yPrice:{
+        position:'left',
+        min:170,
+        max:285,
+        ticks:{
+          color:'#7F77DD',
+          font:{size:9},
+          callback:v=>'$'+v
+        },
+        grid:{color:'rgba(255,255,255,0.04)'},
+        border:{color:'#1e1e2e'},
+        title:{
+          display:true,
+          text:'Precio de cierre (AAPL)',
+          color:'#7F77DD',
+          font:{size:9}
+        }
+      },
+      ySentiment:{
+        position:'right',
+        min:-1.0,
+        max:0.8,
+        ticks:{
+          color:'#1D9E75',
+          font:{size:9},
+          callback:v=>v.toFixed(1),
+          stepSize:0.2
+        },
+        grid:{display:false},
+        border:{color:'#1e1e2e'},
+        title:{
+          display:true,
+          text:'Score promedio FinBERT',
+          color:'#1D9E75',
+          font:{size:9}
+        }
+      }
+    }
+  }
+});
+</script>
